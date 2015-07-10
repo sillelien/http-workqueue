@@ -6,6 +6,7 @@ queue:
 
 sut:
   build: testclient/
-  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}"
+  command: bash -c "[[ $(curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/ping/1) == 'pong 1' ]]"
+
   links:
      - queue

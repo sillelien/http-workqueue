@@ -1,7 +1,9 @@
-fs:
-  build: vizzbuzz/tutum-workqueue
+queue:
+  image: vizzbuzz/tutum-workqueue
   privileged: true
 
 test:
-  image: alpine
-  command: "echo not yet"
+  build: testclient/
+  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}"
+  links:
+     - queue

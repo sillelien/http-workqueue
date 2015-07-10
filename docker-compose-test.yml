@@ -1,0 +1,11 @@
+queue:
+  build: .
+  privileged: true
+  ports:
+    - 8080:8080
+
+sut:
+  build: testclient/
+  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}"
+  links:
+     - queue

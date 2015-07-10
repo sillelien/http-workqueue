@@ -1,0 +1,7 @@
+fs:
+  build: vizzbuzz/tutum-workqueue
+  privileged: true
+
+test:
+  image: alpine
+  command: "echo not yet"

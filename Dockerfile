@@ -1,5 +1,5 @@
 FROM vizzbuzz/base-alpine
-RUN apk update && apk add curl ca-certificates make gcc build-base bash socat && \
+RUN apk update && apk add curl ca-certificates make gcc build-base bash socat docker && \
  curl http://vicerveza.homeunix.net/~viric/soft/ts/ts-0.7.5.tar.gz > /tmp/ts-0.7.5.tar.gz && \
  cd /tmp && tar -zxvf ts-0.7.5.tar.gz && cd ts-0.7.5/ && make && make install && apk del build-base make gcc
 

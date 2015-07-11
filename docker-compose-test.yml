@@ -1,8 +1,16 @@
 queue:
   build: .
   privileged: true
+  volumes:
+   - /var/run/docker.sock:/var/run/docker.sock:rw
   ports:
     - 8080:8080
+  links:
+    - worker:worker
+
+worker:
+  image: alpine
+  command: sh -c "while true; do sleep 10; done"
 
 sut:
   build: testclient/

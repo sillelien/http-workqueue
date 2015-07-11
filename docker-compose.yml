@@ -1,8 +1,5 @@
 queue:
   build: .
-  privileged: true
-  ports:
-    - 8080:8080
   links:
     - worker:worker
 

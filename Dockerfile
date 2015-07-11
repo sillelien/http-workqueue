@@ -9,8 +9,9 @@ RUN apk update && apk add curl ca-certificates make gcc build-base bash socat do
 
 COPY bashhttpd.conf /etc/bashhttpd.conf
 COPY bashhttpd.sh /bin/bashhttpd
+COPY bin/ex.sh /bin/ex.sh
 COPY httpd.sh /etc/services.d/httpd/run
-RUN chmod 755 /etc/services.d/httpd/run /bin/bashhttpd
+RUN chmod 755 /etc/services.d/httpd/run /bin/bashhttpd /bin/ex.sh
 RUN /usr/local/bin/ts
 
 EXPOSE 8080

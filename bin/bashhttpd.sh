@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+
 #  Copyright (C) 2012, Avleen Vig <avleen@gmail.com>
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -22,10 +23,9 @@
 #
 # A simple, configurable HTTP server written in bash.
 #
-# See LICENSE for licensing information.
-#
 # Original author: Avleen Vig, 2012
 # Reworked by:     Josh Cartwright, 2012
+# Additional work and customization by: Neil Ellis, 2015
 
 warn() { echo "WARNING: $@" >&2; }
 recv() { echo "< $@" >&2; }

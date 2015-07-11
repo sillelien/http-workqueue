@@ -26,4 +26,4 @@ This returns the queue id of the request, which can be used to see the result at
 [![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
         
         
-[![](https://badge.imagelayers.io/vizzbuzz/tutum-workqueue.svg)](https://imagelayers.io/?images=vizzbuzz/tutum-workqueue:latest 'Get your own badge on imagelayers.io')        
+[![](https://badge.imagelayers.io/vizzbuzz/http-workqueue.svg)](https://imagelayers.io/?images=vizzbuzz/http-workqueue:latest 'Get your own badge on imagelayers.io')        

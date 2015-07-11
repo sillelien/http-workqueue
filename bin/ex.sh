@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-exec ts bash -c "$@"
+if [[ -n $TUTUM_AUTH ]]
+then
+    exec /bin/tutum-ex.sh
+else
+    exec /bin/local-ex.sh
+fi

@@ -12,7 +12,7 @@ It is usually called from a linked container using:
 curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/google.com/?q=hello
 ```
 
-In this simple example we are requesting immediate execution of a GET method on http://google.com/?=hello
+In this simple example we are requesting execution of a GET method on http://google.com/?=hello on the work queue and we want to get the result synchronously.
 
 Or we could queue the execution using:
 

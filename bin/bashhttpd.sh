@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-
+#set -x
 #  Copyright (C) 2012, Avleen Vig <avleen@gmail.com>
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -202,5 +202,8 @@ while read -r line; do
    REQUEST_HEADERS+=("$line")
 done
 
+export REQUEST_METHOD REQUEST_URI
+
 source /etc/bashhttpd.conf
+
 fail_with 500

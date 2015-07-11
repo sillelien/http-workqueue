@@ -1,32 +1,29 @@
 queue:
   build: .
   privileged: true
-  volumes:
-   - /var/run/docker.sock:/var/run/docker.sock:rw
   ports:
     - 8080:8080
   links:
     - worker:worker
 
 worker:
-  image: alpine
-  command: sh -c "while true; do sleep 10; done"
+  image: neilellis/rendercat-example
 
 
-test:
-  build: testclient/
-  command: bash -xec "a=$(curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/ping/1 | tr -d '\r') ; [[ $a == 'pong 1' ]]"
-  links:
-     - queue
+#test:
+#  build: testclient/
+#  command: bash -xec "a=$(curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/ping/1 | tr -d '\r') ; [[ $a == 'pong 1' ]]"
+#  links:
+#     - queue
 
-test2:
-  build: testclient/
-  links:
-     - queue
-  command: /bin/test_script.sh
+#test2:
+#  build: testclient/
+#  links:
+#     - queue
+#  command: /bin/test_script.sh
 
 test3:
   build: testclient/
-  command: bash -xec "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/date "
+  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/google.com/?q=hello "
   links:
      - queue

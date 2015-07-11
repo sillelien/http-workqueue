@@ -9,8 +9,7 @@ queue:
     - worker:worker
 
 worker:
-  image: alpine
-  command: sh -c "while true; do sleep 10; done"
+  image: neilellis/rendercat-example
 
 sut:
   build: testclient/

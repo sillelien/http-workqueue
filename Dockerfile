@@ -11,6 +11,6 @@ COPY bashhttpd.conf /etc/bashhttpd.conf
 COPY bashhttpd.sh /bin/bashhttpd
 COPY httpd.sh /etc/services.d/httpd/run
 RUN chmod 755 /etc/services.d/httpd/run /bin/bashhttpd
-
+RUN /usr/local/bin/ts
 
 EXPOSE 8080

@@ -30,7 +30,7 @@
 warn() { echo "WARNING: $@" >&2; }
 recv() { echo "< $@" >&2; }
 send() { echo "> $@" >&2;
-         printf '%s\r\n' "$*"; }
+         printf '%s\n' "$*"; }
 
 [[ $UID = 0 ]] && warn "It is not recommended to run bashttpd as root."
 

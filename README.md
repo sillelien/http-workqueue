@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/vizzbuzz/http-workqueue.png?label=ready&title=Ready)](https://waffle.io/vizzbuzz/http-workqueue)
 #Work In Progress
 
 Please understand this is a work in progress, you may wish to play around with it, just to get a feel of what it will do.
@@ -52,7 +51,7 @@ We then wait for it to be executed
 curl ${prefix}/queue/${task1}/wait
 ```
 
-Of course we can be busy doing something else at this time. Next we assert that HTML is within the body of the result and get the HTTP code returned to check to see if it's 200 (it will be 404 if the assertion failed)
+Of course we can be busy doing something else at this time. Next we assert that the text 'HTML' is within the body of the result and get the HTTP code returned to check to see if it's 200 (it will be 404 if the assertion failed)
 
 ```bash
 assert1=$(curl --silent --output /dev/stdout --write-out "%{http_code}" ${prefix}/queue/${task1}/assert/HTML| cut -d' ' -f1)
@@ -67,6 +66,9 @@ err1=$(curl ${prefix}/queue/${task1}/stderr)
 ```
 
 # Planned Work
+
+(We use waffle.io for planning: [![In Progress](https://badge.waffle.io/vizzbuzz/http-workqueue.png?label=ready&title=In+Progress)](https://waffle.io/vizzbuzz/http-workqueue) )
+
 
 The core aim of this service is to support three functions:
 
@@ -84,3 +86,4 @@ And to demonstrate that we really do forget how to [KISS](https://en.wikipedia.o
         
         
 [![](https://badge.imagelayers.io/vizzbuzz/http-workqueue.svg)](https://imagelayers.io/?images=vizzbuzz/http-workqueue:latest 'Get your own badge on imagelayers.io')        
+

@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/vizzbuzz/http-workqueue.png?label=ready&title=Ready)](https://waffle.io/vizzbuzz/http-workqueue)
 #Work In Progress
 
 Please understand this is a work in progress, you may wish to play around with it, just to get a feel of what it will do.

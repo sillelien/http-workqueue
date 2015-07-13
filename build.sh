@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
 set -ex
 cd /tmp
-apk update
-apk upgrade
-apk add curl ca-certificates make gcc build-base bash socat coreutils
 
+logger "Starting build"
+
+echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
+apk update
+apk add curl ca-certificates make gcc build-base bash socat coreutils fcron@testing
 mkdir -p /etc/tasks
 
 
@@ -17,13 +19,6 @@ cd ts-0.7.5/
 make
 make install
 
-#Tyk
-cd /tmp
-curl -L https://github.com/lonelycode/tyk/releases/download/1.7.1/tyk-linux-amd64-1.7.1.tar.gz > /tmp/tyk-linux-amd64-1.7.1.tar.gz
-tar -zxvf /tmp/tyk-linux-amd64-1.7.1.tar.gz
-mv tyk.linux.amd64-1.7.1 /usr/local/tyk
-mkdir -p /etc/tyk/
-mv /usr/local/tyk/templates /etc/tyk/
 
 #AT
 cd /tmp
@@ -35,9 +30,19 @@ cd /tmp/at-3.1.16/
 ./configure --with-daemon_username=atd --with-daemon_groupname=atd  SENDMAIL=/usr/sbin/sendmail
 make install  docdir=/usr/share/doc/at-3.1.16 atdocdir=/usr/share/doc/at-3.1.16
 
+mkdir /cron/
+cat > /cron/atd <<EOF
+* * * * * /bin/at.sh 2>&1 | logger -p cron.debug -t workqueue -t atd
+EOF
+
+
+
+echo "app" > /etc/at.allow
+
 #Clean Up
-apk del build-base make gcc bison flex
+apk del build-base make gcc bison flex go
 rm -rf /tmp/*
+rm -rf /var/cache/apk/*
 
 # Glibc (not needed)
 #

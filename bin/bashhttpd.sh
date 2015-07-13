@@ -40,7 +40,7 @@ DATE=$(date +"%a, %d %b %Y %H:%M:%S %Z")
 declare -a RESPONSE_HEADERS=(
       "Date: $DATE"
    "Expires: $DATE"
-    "Server: Slash Bin Slash Bash"
+    "Server: http-workqueue"
 )
 
 add_response_header() {
@@ -209,6 +209,6 @@ done
 export REQUEST_METHOD REQUEST_URI
 
 add_response_header "X-Request-ID" "${REQ_ID}"
-source /etc/bashhttpd.conf
+source /etc/bashhttpd.conf.sh
 
 fail_with 500

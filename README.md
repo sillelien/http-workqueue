@@ -78,7 +78,7 @@ The core aim of this service is to support three functions:
    
    2) Schedule work at a given time (based on `at`) \[ started \]
    
-   3) Schedule repeated work (based on `cron`) \[ not started \]
+   3) Schedule repeated work (based on `cron`) \[ started \]
 
 And to demonstrate that we really do forget how to [KISS](https://en.wikipedia.org/wiki/KISS_principle)
 

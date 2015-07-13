@@ -1,5 +1,5 @@
 queue:
-  image: this
+  build: .
   privileged: true
 
 sut:

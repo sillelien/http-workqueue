@@ -39,7 +39,7 @@ out1=$(curl ${prefix}/queue/${task1}/stdout)
 err1=$(curl ${prefix}/queue/${task1}/stderr)
 ```
 
-The above is an example of how you use http-workqueue, it actually comes from the test script. Here you see a task being queued
+The above is an example of how you use http-workqueue, it actually comes from the test script. Here you see a task being queued, the request will be made to "http://google.com/?q=test"
 
 ```bash
 task1=$(curl ${prefix}/enqueue/google.com/?q=test)
@@ -69,11 +69,11 @@ err1=$(curl ${prefix}/queue/${task1}/stderr)
 
 The core aim of this service is to support three functions:
 
-   1) Execute/Queue work on a work queue (based on [ts](http://vicerveza.homeunix.net/~viric/soft/ts/))
+   1) Execute/Queue work on a work queue (based on [ts](http://vicerveza.homeunix.net/~viric/soft/ts/)) \[ active development \]
    
-   2) Schedule work at a given time (based on `at`)
+   2) Schedule work at a given time (based on `at`) \[ started \]
    
-   3) Schedule repeated work (based on `cron`)
+   3) Schedule repeated work (based on `cron`) \[ not started \]
 
 And to demonstrate that we really do forget how to [KISS](https://en.wikipedia.org/wiki/KISS_principle)
 

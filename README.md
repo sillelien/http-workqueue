@@ -67,7 +67,7 @@ err1=$(curl ${prefix}/queue/${task1}/stderr)
 
 # Planned Work
 
-(We use waffle.io for planning: [![In Progress](https://badge.waffle.io/vizzbuzz/http-workqueue.png?label=ready&title=In+Progress)](https://waffle.io/vizzbuzz/http-workqueue) )
+(We use waffle.io for planning: [![Issues Completed](https://badge.waffle.io/vizzbuzz/http-workqueue.png?label=ready&title=Done)](https://waffle.io/vizzbuzz/http-workqueue) )
 
 
 The core aim of this service is to support three functions:

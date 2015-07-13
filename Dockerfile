@@ -5,7 +5,6 @@ RUN chmod 755 build.sh
 RUN ./build.sh
 
 RUN atd
-
 COPY etc/* /etc/
 COPY bin/*.sh /bin/
 COPY bin/httpd.sh /etc/services.d/httpd/run

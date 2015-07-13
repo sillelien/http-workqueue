@@ -3,7 +3,11 @@ set -ex
 cd /tmp
 apk update
 apk upgrade
-apk add curl ca-certificates make gcc build-base bash socat
+apk add curl ca-certificates make gcc build-base bash socat coreutils
+
+mkdir -p /etc/tasks
+
+
 
 #Task Scheduler
 cd /tmp

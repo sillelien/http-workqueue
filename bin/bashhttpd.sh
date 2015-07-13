@@ -27,6 +27,8 @@
 # Reworked by:     Josh Cartwright, 2012
 # Additional work and customization by: Neil Ellis, 2015
 
+export REQ_ID=$(cat /proc/sys/kernel/random/uuid)
+
 warn() { echo "WARNING: $@" >&2; }
 recv() { echo "< $@" >&2; }
 send() { echo "> $@" >&2;
@@ -202,8 +204,11 @@ while read -r line; do
    REQUEST_HEADERS+=("$line")
 done
 
+
+
 export REQUEST_METHOD REQUEST_URI
 
+add_response_header "X-Request-ID" "${REQ_ID}"
 source /etc/bashhttpd.conf
 
 fail_with 500

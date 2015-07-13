@@ -23,6 +23,48 @@ curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/enqueue/goog
 This returns the queue id of the request, which can be used to see the result at a later time.
 
 
+
+# Introduction
+
+```bash
+#!/usr/bin/env bash
+set -ex
+prefix="http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}"
+task1=$(curl ${prefix}/enqueue/google.com/?q=test)
+curl ${prefix}/queue/${task1}/wait
+assert1=$(curl --silent --output /dev/stdout--write-out "%{http_code}" ${prefix}/queue/${task1}/assert/HTML| cut -d' ' -f1)
+(($assert1 == 200))
+
+out1=$(curl ${prefix}/queue/${task1}/stdout)
+err1=$(curl ${prefix}/queue/${task1}/stderr)
+```
+
+The above is an example of how you use http-workqueue, it actually comes from the test script. Here you see a task being queued
+
+```bash
+task1=$(curl ${prefix}/enqueue/google.com/?q=test)
+```
+
+We then wait for it to be executed
+
+```bash
+curl ${prefix}/queue/${task1}/wait
+```
+
+Of course we can be busy doing something else at this time. Next we assert that HTML is within the body of the result and get the HTTP code returned to check to see if it's 200 (it will be 404 if the assertion failed)
+
+```bash
+assert1=$(curl --silent --output /dev/stdout --write-out "%{http_code}" ${prefix}/queue/${task1}/assert/HTML| cut -d' ' -f1)
+(($assert1 == 200))
+```
+
+Finally we request the stdout and stderr of the command:
+
+```bash
+out1=$(curl ${prefix}/queue/${task1}/stdout)
+err1=$(curl ${prefix}/queue/${task1}/stderr)
+```
+
 # Planned Work
 
 The core aim of this service is to support three functions:

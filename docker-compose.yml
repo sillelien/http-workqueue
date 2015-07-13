@@ -13,14 +13,14 @@ worker:
 #  links:
 #     - queue
 
-#test2:
-#  build: testclient/
-#  links:
-#     - queue
-#  command: /bin/test_script.sh
-
-test3:
+test2:
   build: testclient/
-  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/google.com/?q=hello "
   links:
      - queue
+  command: /bin/test_script.sh && echo "TESTS SUCCEEDED"
+
+#test3:
+#  build: testclient/
+#  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/google.com/?q=hello "
+#  links:
+#     - queue

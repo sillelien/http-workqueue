@@ -1,10 +1,10 @@
 queue:
   build: .
-  links:
-    - worker:worker
+#  links:
+#    - worker:worker
 
-worker:
-  image: neilellis/rendercat-example
+#worker:
+#  image: neilellis/rendercat-example
 
 
 #test:

@@ -22,7 +22,9 @@ curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/enqueue/goog
 
 This returns the queue id of the request, which can be used to see the result at a later time.
 
+Want to play more? Then click here:
 
+[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
 
 # Introduction
 
@@ -81,9 +83,6 @@ The core aim of this service is to support three functions:
 And to demonstrate that we really do forget how to [KISS](https://en.wikipedia.org/wiki/KISS_principle)
 
 [![Keep it Simple](http://3.bp.blogspot.com/-WMySBXYTvJU/TtiDb28x2yI/AAAAAAAAADI/aPDzvtpsuiw/s200/metaphor-for-complexity.gif)](https://en.wikipedia.org/wiki/KISS_principle)
-   
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
-        
-        
+           
 [![](https://badge.imagelayers.io/vizzbuzz/http-workqueue.svg)](https://imagelayers.io/?images=vizzbuzz/http-workqueue:latest 'Get your own badge on imagelayers.io')        
 

@@ -1,11 +1,6 @@
 queue:
   build: .
   privileged: true
-#  links:
-#    - worker:worker
-
-#worker:
-#  image: neilellis/rendercat-example
 
 sut:
   build: testclient/

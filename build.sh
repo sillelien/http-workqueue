@@ -2,8 +2,6 @@
 set -ex
 cd /tmp
 
-logger "Starting build"
-
 echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 apk update
 apk add curl ca-certificates make gcc build-base bash socat coreutils fcron@testing
@@ -34,21 +32,10 @@ mkdir /cron/
 cat > /cron/atd <<EOF
 * * * * * /bin/at.sh 2>&1 | logger -p cron.debug -t workqueue -t atd
 EOF
-
-
-
 echo "app" > /etc/at.allow
 
 #Clean Up
-apk del build-base make gcc bison flex go
+apk del build-base make gcc bison flex
 rm -rf /tmp/*
 rm -rf /var/cache/apk/*
 
-# Glibc (not needed)
-#
-# cd /tmp && \
-#        wget "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk" \
-#             "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-bin-2.21-r2.apk" && \
-#        apk add --allow-untrusted glibc-2.21-r2.apk glibc-bin-2.21-r2.apk && \
-#        /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
-#        echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf

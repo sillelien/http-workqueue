@@ -2,7 +2,13 @@
 
 Please understand this is a work in progress, you may wish to play around with it, just to get a feel of what it will do.
 
-# Http Work Queue
+Want to tinker? Then click here:
+
+[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
+
+# Introduction
+
+## Work Queue
 
 The idea behind this container is to provide a very simple work queue driven by the HTTP protocol. You make requests of this container to make requests upon another service, however execution of these requests are moderated by a work queue (see [Task Spooler](http://vicerveza.homeunix.net/~viric/soft/ts/) for the underlying mechanism)
 
@@ -22,11 +28,7 @@ curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/enqueue/goog
 
 This returns the queue id of the request, which can be used to see the result at a later time.
 
-Want to play more? Then click here:
-
-[![Deploy to Tutum](https://s.tutum.co/deploy-to-tutum.svg)](https://dashboard.tutum.co/stack/deploy/)
-
-# Introduction
+### Sample Code
 
 ```bash
 #!/usr/bin/env bash

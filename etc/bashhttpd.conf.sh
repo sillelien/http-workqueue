@@ -73,6 +73,9 @@ serve_queue_stdout() {
     exit 0
 
 }
+on_uri_match "^/queue/${uuidregex}" serve_queue_stdout
+on_uri_match "^/schedule/${uuidregex}" serve_queue_stdout
+
 on_uri_match "^/queue/${uuidregex}/stdout" serve_queue_stdout
 on_uri_match "^/schedule/${uuidregex}/stdout" serve_queue_stdout
 
@@ -108,7 +111,7 @@ on_uri_match "^/execute/${hostregex}/(.*)$" serve_execute
 on_uri_match "^/queue/run/${hostregex}/(.*)$" serve_execute
 
 
-schedule_execute() {
+schedule_at() {
     add_response_header "Content-Type" "text/plain"
     add_response_header "X-Task-Id" "$REQ_ID"
 
@@ -117,10 +120,10 @@ schedule_execute() {
     send_response_ok_exit <<< "$REQ_ID"
     exit 0
 }
-on_uri_match "^/schedule/at/${scheduleregex}/${scheduleregex}/${hostregex}/(.*)$" schedule_execute
+on_uri_match "^/schedule/at/${scheduleregex}/${scheduleregex}/${hostregex}/(.*)$" schedule_at
 
 
-schedule_execute_in() {
+schedule_in() {
     add_response_header "Content-Type" "text/plain"
     add_response_header "X-Task-Id" "$REQ_ID"
 
@@ -129,7 +132,7 @@ schedule_execute_in() {
     send_response_ok_exit <<< "$REQ_ID"
     exit 0
 }
-on_uri_match "^/schedule/in/([0-9]+)/(minutes|hours|days|weeks)/${hostregex}/(.*)$" schedule_execute_in
+on_uri_match "^/schedule/in/([0-9]+)/(minutes|hours|days|weeks)/${hostregex}/(.*)$" schedule_in
 
 update_cron() {
     cat /cron/* | crontab -

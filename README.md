@@ -69,6 +69,10 @@ out1=$(curl ${prefix}/queue/${task1}/stdout)
 err1=$(curl ${prefix}/queue/${task1}/stderr)
 ```
 
+### API Reference
+
+Is currently being built on Apiary.io at http://docs.httpworkqueue.apiary.io/
+
 # Planned Work
 
 (We use waffle.io for planning: [![Issues Completed](https://badge.waffle.io/vizzbuzz/http-workqueue.png?label=ready&title=Done)](https://waffle.io/vizzbuzz/http-workqueue) )

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/with-contenv bash
 export PATH=$PATH:/usr/local/bin
 echo ${REMOTE_REQUEST_TIMEOUT:-300} > /etc/tasks/timeout
 mkdir -p /tasks

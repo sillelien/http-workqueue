@@ -2,8 +2,8 @@ queue:
   image: sillelien/http-workqueue
 
 test:
-  image: debian
-  command: apt-get install curl && bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/google.com/?q=hello "
+  image: ubuntu
+  command: bash -c "curl http://${QUEUE_PORT_8080_TCP_ADDR}:${QUEUE_PORT_8080_TCP_PORT}/execute/google.com/?q=hello "
   links:
      - queue
 

@@ -1,5 +1,5 @@
 queue:
-  image: vizzbuzz/http-workqueue
+  image: sillelien/http-workqueue
 
 test:
   image: alpine
